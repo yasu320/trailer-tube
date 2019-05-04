@@ -1,34 +1,45 @@
-<h2>Sign up</h2>
+<article class="card-body mx-auto">
+  <h4 class="card-title mt-3 text-center">新規登録</h4>
+  <p>
+    <%= link_to user_twitter_omniauth_authorize_path, class: "btn btn-block btn-twitter" do %>
+      <%= fa_icon("twitter lg") %> Twitterでログイン
+    <% end %>
+    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-facebook" do %>
+      <%= fa_icon("facebook lg") %> Facebookでログイン
+    <% end %>
+  </p>
+  <p class="divider-text">
+    <span class="bg-white">または</span>
+  </p>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= fa_icon("user lg") %></span>
+      </div>
+      <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control", placeholder:"ユーザーネーム" %>
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= fa_icon("envelope") %></span>
+      </div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"メールアドレス" %>
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= fa_icon("lock lg") %></span>
+      </div>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"パスワード" %>
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%= fa_icon("lock lg") %></span>
+      </div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder:"パスワードの確認" %>
+    </div> <!-- form-group// -->
+    <div class="form-group">
+      <%= f.submit "登録する", class: "btn btn-primary btn-block" %>
+    </div> <!-- form-group// -->
+  <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <p class="text-center">アカウントをお持ちですか？<%= link_to "ログインする", user_session_path %></p>
+</article>
