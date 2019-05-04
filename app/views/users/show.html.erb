@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="view-account">
+    <section class="module">
+      <div class="module-inner">
+        <div class="side-bar">
+          <div class="user-info">
+            <% if @user.provider == 'facebook' %>
+              <%= image_tag @user.image + "?type=large", size: '150x150' %>
+            <% elsif @user.provider == 'twitter' %>
+              <%= image_tag @user.image.gsub!("_normal",""), size: '150x150' %>
+            <% else %>
+              <%= holder_tag '150x150', 'アイコン' %>
+            <% end %>
+            <ul class="meta list list-unstyled">
+              <li class="name">
+                <%= @user.username %>
+              </li>
+            </ul>
+          </div>
+          <nav class="side-menu">
+            <ul class="nav">
+              <li><a href="#"><span class="fa fa-user"></span>  プロフィール</a></li>
+              <li class="active"><a href="#"><span class="fa fa-cog"></span>  レビュー</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="content-panel">
+          <div class="content-header-wrapper">
+            <h2 class="title">プロフィール</h2>
+          </div>
+          <div class="drive-wrapper drive-list-view">
+            <div class="table-responsive drive-items-table-wrapper">
+              <%= @user.email %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbar-header">
+      <ul class="navbar-nav mr-auto">　
+        <li class="nav-item">
+          <%= link_to "Trailer Tube", root_path, class:"navbar-brand" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">アカウント</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <%= link_to 'プロフィール', user_path(current_user), class:"dropdown-item" %>
+              <a class="dropdown-item" href="#">設定</a>
+              <div class="dropdown-divider"></div>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to 'ログイン', new_user_session_path, class:"nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to 'About', '#', class:"nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
