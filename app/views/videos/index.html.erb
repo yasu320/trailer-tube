@@ -1,7 +1,49 @@
-<h1>Videos#index</h1>
-<p>Find me in app/views/videos/index.html.erb</p>
-<% if user_signed_in? %>
-  <%= link_to 'logout', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'sing_up', new_user_registration_path %>
-<% end %>
+<section class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Trailer Tube</h1>
+    <p class="lead text-muted">予告編から映画を探す、レビューをする</p>
+    <% unless user_signed_in? %>
+      <p>
+        <%= link_to "登録して使う", new_user_registration_path, class:"btn btn-primary my-2" %>
+      </p>
+    <% end %>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect fill="#55595c" width="100%" height="100%" /></svg>
+        <div class="card-body">
+          <p class="card-text"><%= 'title' %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted"><%= 'date' %></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect fill="#55595c" width="100%" height="100%" /></svg>
+        <div class="card-body">
+          <p class="card-text"><%= 'title' %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted"><%= 'date' %></small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect fill="#55595c" width="100%" height="100%" /></svg>
+        <div class="card-body">
+          <p class="card-text"><%= 'title' %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted"><%= 'date' %></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

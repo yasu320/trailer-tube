@@ -53,6 +53,28 @@ p {
   padding-left: 15px;
 }
 
+/* home */
+
+.jumbotron {
+  background-image: url("felix-mooneeram-222805-unsplash.jpg");
+  background-size: cover;
+  background-position: center 60%;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  background-color: rgba(0,0,0,0.6);
+  .container p {
+    color: white;
+  }
+}
+
+.jumbotron-heading {
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Lobster', cursive;
+  color: white;
+  font-size: 4em;
+}
+
 /* sign in form */
 
 .card-body {
