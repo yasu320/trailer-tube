@@ -19,8 +19,20 @@
           </div>
           <nav class="side-menu">
             <ul class="nav">
-              <li><a href="#"><span class="fa fa-user"></span>  プロフィール</a></li>
-              <li class="active"><a href="#"><span class="fa fa-cog"></span>  レビュー</a></li>
+              <li class="active"><%= link_to user_path(current_user) do %>
+                  <%= fa_icon("user lg")%> プロフィール
+                <% end %>
+              </li>
+              <li><%= link_to edit_user_registration_path do %>
+                  <%= fa_icon("cog lg")%> 設定
+                <% end %>
+              </li>
+              <% if @user.provider == nil %>
+                <li><%= link_to password_change_users_path do %>
+                    <%= fa_icon("lock lg")%> パスワードを変更
+                  <% end %>
+                </li>
+              <% end %>
             </ul>
           </nav>
         </div>
@@ -31,6 +43,7 @@
           </div>
           <div class="drive-wrapper drive-list-view">
             <div class="table-responsive drive-items-table-wrapper">
+              <%= @user.username %>
               <%= @user.email %>
             </div>
           </div>
