@@ -18,3 +18,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require holder
+
+document.addEventListener('turbolinks:load', function() {
+    Holder.run()
+});
