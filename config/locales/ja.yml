@@ -13,6 +13,8 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
+        current_password: 現在のパスワード
+        image: プロフィール写真
   date:
     abbr_day_names:
     - 日

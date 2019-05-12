@@ -12,6 +12,8 @@
     <span class="bg-white">または</span>
   </p>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
     <div class="form-group input-group">
       <div class="input-group-prepend">
         <span class="input-group-text"><%= fa_icon("user lg") %></span>
