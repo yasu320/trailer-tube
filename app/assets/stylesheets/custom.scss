@@ -75,6 +75,20 @@ p {
   font-size: 4em;
 }
 
+/* error-message */
+#error_explanation {
+  color: red;
+  li {
+    list-style: none;
+  }
+}
+
+.alert {
+  color: red;
+  text-align: left;
+  margin-bottom: 0;
+}
+
 /* sign in form */
 
 .card-body {
@@ -709,3 +723,4 @@ p {
 .module .module-footer a {
   color: #9499a3;
 }
+
