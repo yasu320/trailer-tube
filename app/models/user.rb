@@ -27,7 +27,6 @@ class User < ApplicationRecord
   end
 
   def download_and_attach_image
-
     file = open(image_url)
     image.attach(io: file,
                  filename: "profile_image.#{file.content_type_parse.first.split("/").last}",

@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     end
   end
   root to: 'videos#index'
+
+  resources :videos, only: [:index, :show]
 end

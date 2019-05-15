@@ -12,38 +12,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect fill="#55595c" width="100%" height="100%" /></svg>
-        <div class="card-body">
-          <p class="card-text"><%= 'title' %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted"><%= 'date' %></small>
+    <% @videos.each do |video| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <%= link_to image_tag(video.thumbnail,:width => "347.98"), video_path(video.url) %>
+          <div class="card-body">
+            <p class="card-text"><%= video.title %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted"><%= Date.parse(video.date.to_s).strftime("%Y年%m月%d日") %></small>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect fill="#55595c" width="100%" height="100%" /></svg>
-        <div class="card-body">
-          <p class="card-text"><%= 'title' %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted"><%= 'date' %></small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-4 shadow-sm">
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect fill="#55595c" width="100%" height="100%" /></svg>
-        <div class="card-body">
-          <p class="card-text"><%= 'title' %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <small class="text-muted"><%= 'date' %></small>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
