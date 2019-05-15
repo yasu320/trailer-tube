@@ -1,0 +1,8 @@
+<div class="custom-container" %>
+  <div class="iframe">
+    <iframe width="750" height="422" src="https://www.youtube.com/embed/<%= @video.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>動画公開日：<%= Date.parse(@video.date.to_s).strftime("%Y年%m月%d日") %></p>
+    <p><%= @video.title %></p>
+    <p><%= @video.description %></p>
+  </div>
+</div>

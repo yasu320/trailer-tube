@@ -724,3 +724,19 @@ p {
   color: #9499a3;
 }
 
+/* video-show */
+.custom-container {
+  text-align: center;
+  width: 750px;
+  margin: auto;
+  padding: 60px 0 200px 0;
+  .iframe {
+    p {
+      text-align: left;
+    }
+  }
+}
+
+.card-body {
+  padding-bottom: 20px;
+}
