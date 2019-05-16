@@ -26,7 +26,7 @@ class Video < ApplicationRecord
   def self.search_videos
     params = URI.encode_www_form({
       part:  "snippet",
-      key: 'AIzaSyBBkzXa908B7gbXBcTLmYyrioGuyHDyEa0',
+      key: Rails.application.credentials.youtube[:youtube_api_key],
       maxResults:  "50",
       q: '映画　予告　公式',
       type:  'video',
@@ -46,7 +46,7 @@ class Video < ApplicationRecord
   def search_by(video_id)
     params = URI.encode_www_form({
       part:  "snippet",
-      key: 'AIzaSyD2R6dgp8x8OTlEzEk5QXKGpUoXyo0lORg',
+      key: Rails.application.credentials.youtube[:youtube_api_key2],
       id: video_id,
     })
 
