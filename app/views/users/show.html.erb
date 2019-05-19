@@ -15,10 +15,11 @@
           </div>
           <nav class="side-menu">
             <ul class="nav">
-              <li class="active"><%= link_to user_path(current_user) do %>
+              <li class="active"><%= link_to user_path(@user) do %>
                   <%= fa_icon("user lg")%> プロフィール
                 <% end %>
               </li>
+            <% if @user == current_user %>
               <li><%= link_to edit_user_registration_path do %>
                   <%= fa_icon("cog lg")%> 設定
                 <% end %>
@@ -29,6 +30,7 @@
                   <% end %>
                 </li>
               <% end %>
+            <% end %>
             </ul>
           </nav>
         </div>
