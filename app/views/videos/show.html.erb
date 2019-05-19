@@ -2,6 +2,7 @@
 <div class="custom-container" %>
   <div class="iframe">
     <iframe width="750" height="422" src="https://www.youtube.com/embed/<%= @video.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <%= rating_for @video, '評価', disable_after_rate: true, imdb_avg: true %>
     <div class="review-button"><%= link_to '評価・レビュー', new_video_review_path(@video), class:"btn btn-warning" %></div>
     <p>動画公開日：<%= Date.parse(@video.date.to_s).strftime("%Y年%m月%d日") %></p>
     <p><%= @video.title %></p>

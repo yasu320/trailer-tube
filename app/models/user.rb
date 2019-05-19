@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :authentication_keys => [:username]
   has_one_attached :image
   has_many :reviews
+  ratyrate_rater
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

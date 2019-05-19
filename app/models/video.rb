@@ -1,5 +1,6 @@
 class Video < ApplicationRecord
   has_many :reviews
+  ratyrate_rateable "評価"
 
   def self.save_videos
     Video.search_videos['items'].each do |item|
