@@ -1,0 +1,28 @@
+<% provide(:title, "レビューを投稿") %>
+<div class="review-container">
+  <div class="video-info">
+  <%= image_tag(@video.thumbnail,:width => "100") %>
+  <%= @video.title %>
+  </div>
+  <%= form_for [@video, @review] do |f| %>
+    <form>
+      <div class="form-group row">
+        <%= f.label :title, class: "col-sm-1 offset-sm-3 col-form-label" %>
+        <div class="col-sm-4">
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.label :content, class: "col-sm-1 offset-sm-3 col-form-label" %>
+        <div class="col-sm-4">
+          <%= f.text_area :content, class: "form-control", size: "60x10"  %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-10">
+          <%= f.submit 'レビューする', class: "btn btn-primary" %>
+        </div>
+      </div>
+    </form>
+  <% end %>
+</div>

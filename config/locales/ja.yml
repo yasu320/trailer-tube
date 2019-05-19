@@ -15,6 +15,9 @@ ja:
         password_confirmation: 確認用パスワード
         current_password: 現在のパスワード
         image: プロフィール写真
+      review:
+        title: タイトル
+        content: 本文
   date:
     abbr_day_names:
     - 日
