@@ -8,6 +8,7 @@ class User < ApplicationRecord
          omniauth_providers: [:twitter, :facebook],
          :authentication_keys => [:username]
   has_one_attached :image
+  has_many :reviews
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

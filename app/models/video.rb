@@ -1,4 +1,6 @@
 class Video < ApplicationRecord
+  has_many :reviews
+
   def self.save_videos
     Video.search_videos['items'].each do |item|
       title = item['snippet']['title']

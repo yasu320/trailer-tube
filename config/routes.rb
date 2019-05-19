@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+  get 'reviews/create'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
   resources :users, only: [:show] do
     collection do
@@ -8,5 +10,7 @@ Rails.application.routes.draw do
   end
   root to: 'videos#index'
 
-  resources :videos, only: [:index, :show]
+  resources :videos, only: [:index, :show] do
+    resources :reviews, only: [:new, :create]
+  end
 end
