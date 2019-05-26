@@ -1,5 +1,5 @@
 class Video < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   ratyrate_rateable "評価"
   validates :title, uniqueness: true, presence: true
   validates :url, uniqueness: true, presence: true
