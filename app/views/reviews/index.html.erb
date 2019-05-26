@@ -1,13 +1,10 @@
-<% provide(:title, @video.title) %>
+<% provide(:title, "#{@video.title}のレビュー") %>
 <div class="custom-container" %>
-  <div class="iframe">
-    <iframe width="750" height="422" src="https://www.youtube.com/embed/<%= @video.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <%= rating_for @video, '評価', disable_after_rate: true, imdb_avg: true %>
-    <div class="review-button"><%= link_to 'レビューを書く', new_video_review_path(@video), class:"btn btn-warning" %></div>
-    <p>動画公開日：<%= Date.parse(@video.date.to_s).strftime("%Y年%m月%d日") %></p>
-    <p><%= @video.title %></p>
-    <p><%= @video.description %></p>
+  <div class="video-info">
+    <%= link_to image_tag(@video.thumbnail,:width => "100"), video_path(@video) %>
+    <%= link_to @video.title, video_path(@video) %>
   </div>
+  <div class="review-button"><%= link_to 'レビューを書く', new_video_review_path(@video), class:"btn btn-warning" %></div>
   <h2>評価・レビュー</h2>
   <% if @reviews.exists? %>
     <% @reviews.each do |review| %>
@@ -30,6 +27,8 @@
         </div>
       </div>
     <% end %>
-    <div class="review-button"><%= link_to 'すべてのレビューを見る', video_reviews_path(@video), class:"btn btn-info" %></div>
-  <% end %>
+  <% else %>
+    <h2>まだレビューはありません</h2>
+<% end %>
+  <%= paginate @reviews %>
 </div>
