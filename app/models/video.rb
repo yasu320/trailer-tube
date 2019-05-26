@@ -1,32 +1,47 @@
 class Video < ApplicationRecord
   has_many :reviews
   ratyrate_rateable "評価"
+  validates :title, uniqueness: true, presence: true
+  validates :url, uniqueness: true, presence: true
+  validates :date, presence: true
+  validates :thumbnail, uniqueness: true, presence: true
+  scope :recent, -> { order(created_at: :desc) }
 
-  def self.save_videos
-    Video.search_videos['items'].each do |item|
-      title = item['snippet']['title']
-      url = item['id']['videoId']
-      date = item['snippet']['publishedAt']
-      thumbnail = item['snippet']['thumbnails']['high']['url']
+  def self.download_videos
+    first_flg = true
 
-      video ||= Video.create(
-        title:      title,
-        url:        url,
-        date:       date,
-        thumbnail: thumbnail
-      )
+    next_page_token = ''
 
-      description = video.search_by(video.url)['items'][0]["snippet"]['description']
+    box = []
 
-      video.attributes = { description: description }
+    loop do
+      if first_flg
 
-      video.save
+        res = Video.search_videos(next_page_token)['items']
 
-      video
+        res.reverse_videos(box)
+
+        next_page_token = Video.search_videos(next_page_token)['nextPageToken']
+
+        first_flg = false
+
+      else
+
+        res = Video.search_videos(next_page_token)['items']
+
+        res.reverse_videos(box)
+
+        next_page_token = Video.search_videos(next_page_token)['nextPageToken']
+
+        break if next_page_token.nil?
+
+      end
     end
+
+    box.save_videos
   end
 
-  def self.search_videos
+  def self.search_videos(next_page_token)
     params = URI.encode_www_form({
       part:  "snippet",
       key: Rails.application.credentials.youtube[:youtube_api_key],
@@ -34,7 +49,7 @@ class Video < ApplicationRecord
       q: '映画　予告　公式',
       type:  'video',
       order: "date",
-      videoCategoryId: '1',
+      pageToken: next_page_token,
     })
 
     uri = URI.parse("https://www.googleapis.com/youtube/v3/search?#{params}")
@@ -60,5 +75,35 @@ class Video < ApplicationRecord
     end
 
     @video = JSON.parse(response.body)
+  end
+end
+
+class Array
+  def save_videos
+    self.each do |item|
+      title = item['snippet']['title']
+      url = item['id']['videoId']
+      date = item['snippet']['publishedAt']
+      thumbnail = item['snippet']['thumbnails']['high']['url']
+
+      video ||= Video.create(
+        title:      title,
+        url:        url,
+        date:       date,
+        thumbnail: thumbnail
+      )
+
+      description = video.search_by(video.url)['items'][0]["snippet"]['description']
+
+      video.attributes = { description: description }
+
+      video.save
+    end
+  end
+
+  def reverse_videos(box)
+    self.each do |r|
+      box.unshift(r)
+    end
   end
 end
