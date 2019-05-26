@@ -1,7 +1,7 @@
 class VideosController < ApplicationController
   MAX_RESULTS = 3
   def index
-    @videos = Video.all
+    @videos = Video.all.recent
   end
 
   def show
