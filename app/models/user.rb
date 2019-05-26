@@ -8,7 +8,7 @@ class User < ApplicationRecord
          omniauth_providers: [:twitter, :facebook],
          :authentication_keys => [:username]
   has_one_attached :image
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   ratyrate_rater
 
   def self.find_for_oauth(auth)
