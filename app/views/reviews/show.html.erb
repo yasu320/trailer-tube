@@ -1,0 +1,26 @@
+<% provide(:title, "「#{@review.title.truncate(10)}」#{@video.title}・#{@review.user.username}さんのレビュー") %>
+<div class="custom-container" %>
+  <div class="video-info">
+    <%= link_to image_tag(@video.thumbnail,:width => "100"), video_path(@video) %>
+    <%= link_to @video.title, video_path(@video) %>
+  </div>
+  <h2>評価・レビュー</h2>
+  <div class="reviews">
+    <div class="row blockquote review-item">
+      <div class="col-md-3 text-center">
+        <%= link_to @review.user do %>
+          <%= image_tag @review.user.image.variant(resize: "80x80") if @review.user.image.attached? %>
+          <%= holder_tag '80x80', 'アイコン' unless @review.user.image.attached? %>
+        <% end %>
+        <div class="caption">
+          <small><%= link_to @review.user.username, @review.user %></small>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h3><%= @review.title %></h3>
+        <%= simple_format(@review.content.truncate(100)) %>
+        <small class="review-date"><%= Date.parse(@review.created_at.to_s).strftime("%Y年%m月%d日") %></small>
+      </div>
+    </div>
+  </div>
+</div>

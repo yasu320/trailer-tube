@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'videos#index'
   post '/rate' => 'rater#create', :as => 'rate'
-  get 'reviews/new'
-  get 'reviews/create'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
   resources :users, only: [:show] do
     collection do
@@ -9,9 +8,8 @@ Rails.application.routes.draw do
       patch 'update_password'
     end
   end
-  root to: 'videos#index'
 
   resources :videos, only: [:index, :show] do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:index, :show, :new, :create]
   end
 end

@@ -1,9 +1,17 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_video, only: [:new, :create]
+  before_action :set_video, only: [:index, :show, :new, :create]
+
+  def index
+    @reviews = @video.reviews.includes(:user).page(params[:page]).recent
+  end
+
+  def show
+    @review = @video.reviews.find(params[:id])
+  end
 
   def new
-    @review = Review.new
+    @review = @video.reviews.new
   end
 
   def create
