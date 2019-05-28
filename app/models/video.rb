@@ -5,21 +5,23 @@ class Video < ApplicationRecord
   validates :url, uniqueness: true, presence: true
   validates :date, presence: true
   validates :thumbnail, uniqueness: true, presence: true
-  scope :recent, -> { order(created_at: :desc) }
+  scope :recent, -> { order(date: :desc) }
 
   def self.download_videos
     first_flg = true
 
     next_page_token = ''
 
-    box = []
+    a = []
 
     loop do
       if first_flg
 
         res = Video.search_videos(next_page_token)['items']
 
-        res.reverse_videos(box)
+        res.each do |elem|
+          a.unshift(elem)
+        end
 
         next_page_token = Video.search_videos(next_page_token)['nextPageToken']
 
@@ -29,7 +31,9 @@ class Video < ApplicationRecord
 
         res = Video.search_videos(next_page_token)['items']
 
-        res.reverse_videos(box)
+        res.each do |elem|
+          a.unshift(elem)
+        end
 
         next_page_token = Video.search_videos(next_page_token)['nextPageToken']
 
@@ -38,7 +42,7 @@ class Video < ApplicationRecord
       end
     end
 
-    box.save_videos
+    a.save_videos
   end
 
   def self.search_videos(next_page_token)
@@ -98,12 +102,6 @@ class Array
       video.attributes = { description: description }
 
       video.save
-    end
-  end
-
-  def reverse_videos(box)
-    self.each do |r|
-      box.unshift(r)
     end
   end
 end
