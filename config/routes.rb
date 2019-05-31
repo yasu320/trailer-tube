@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/password/change', to: 'users#password'
       patch 'update_password'
     end
+    get '/reviews/', to: 'reviews#user_reviews'
   end
 
   resources :videos, only: [:index, :show] do
