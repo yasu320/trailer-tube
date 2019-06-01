@@ -43,12 +43,13 @@
           <div class="content-header-wrapper">
             <h2 class="title">プロフィール</h2>
           </div>
-          <div class="drive-wrapper drive-list-view">
-            <div class="table-responsive drive-items-table-wrapper">
-              <%= @user.username %>
-              <%= @user.email %>
-            </div>
-          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%= "ユーザーネーム: #{@user.username}" %></li>
+            <li class="list-group-item"><%= "自己紹介: #{@user.description}" %></li>
+            <li class="list-group-item"><%= "性別: #{@user.sex}" %></li>
+            <li class="list-group-item"><%= "生年月日: #{Date.parse(@user.birth_date.to_s).strftime("%Y年%m月%d日") if @user.birth_date.present?}" %></li>
+            <li class="list-group-item"><%= "ウェブサイト: #{@user.website}" %></li>
+          </ul>
         </div>
       </div>
     </section>

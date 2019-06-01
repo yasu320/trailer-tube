@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :reviews, dependent: :destroy
   ratyrate_rater
+  enum sex: { 男性: 1, 女性: 2, 指定なし: 3 }
+  validates :description, length: { maximum: 5000 }
+  validates :sex, numericality: { only_integer: true }
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

@@ -60,6 +60,30 @@
                 </div>
               </div>
               <div class="form-group row">
+                <%= f.label :description, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", size: "60x10" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :birth_date, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.date_select :birth_date, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 16), default: Date.new(1989, 1, 1) %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :sex, class: "col-sm-3 col-form-label", for: "inlineFormCustomSelect"%>
+                <div class="col-sm-6">
+                  <%= f.select :sex, User.sexes.keys.to_a, {}, class: "custom-select", id: "inlineFormCustomSelect" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :website, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.url_field :website, autofocus: true, autocomplete: "website", class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
                   <%= f.label :email, class: "col-sm-3 col-form-label"%>
                 <div class="col-sm-6">
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
