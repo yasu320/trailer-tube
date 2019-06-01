@@ -15,6 +15,10 @@ ja:
         password_confirmation: 確認用パスワード
         current_password: 現在のパスワード
         image: プロフィール写真
+        description: 自己紹介
+        sex: 性別
+        website: ウェブサイト
+        birth_date: 生年月日
       review:
         title: タイトル
         content: 本文
