@@ -15,7 +15,7 @@
     <% @videos.each do |video| %>
       <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-          <%= link_to image_tag(video.thumbnail,:width => "347.98"), video_path(video) %>
+          <%= link_to image_tag(video.thumbnail, class: "card-img-top"), video_path(video) %>
           <div class="card-body">
             <p class="card-text"><%= video.title %></p>
             <div class="d-flex justify-content-between align-items-center">
