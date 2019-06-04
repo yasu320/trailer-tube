@@ -726,11 +726,12 @@ p {
 
 /* video-show */
 .custom-container {
+  overflow: hidden;
   text-align: center;
   width: 750px;
   margin: auto;
   padding: 60px 0 200px 0;
-  .iframe {
+  .iframe-wrap {
     p {
       text-align: left;
     }
