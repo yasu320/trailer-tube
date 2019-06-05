@@ -1,6 +1,6 @@
 <% provide(:title, "「#{@review.title.truncate(10)}」#{@video.title}・#{@review.user.username}さんのレビュー") %>
-<div class="custom-container" %>
-  <div class="video-info">
+<div class="container" %>
+  <div class="video-info justify-content-center d-flex">
     <%= link_to image_tag(@video.thumbnail,:width => "100"), video_path(@video) %>
     <%= link_to @video.title, video_path(@video) %>
   </div>

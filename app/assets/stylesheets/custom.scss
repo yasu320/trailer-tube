@@ -7,6 +7,10 @@ main > .container {
   padding: 60px 15px 0;
 }
 
+main {
+  padding-bottom: 50px;
+}
+
 section {
   overflow: auto;
 }
@@ -725,16 +729,10 @@ p {
 }
 
 /* video-show */
-.custom-container {
-  overflow: hidden;
-  text-align: center;
-  width: 750px;
-  margin: auto;
-  padding: 60px 0 200px 0;
-  .iframe-wrap {
-    p {
-      text-align: left;
-    }
+.iframe-wrap {
+  word-wrap: break-word;
+  p {
+    text-align: left;
   }
 }
 
@@ -822,31 +820,28 @@ p {
   h3 {
     font-size: 0.8em;
   }
+
   p {
     font-size: 0.6em;
   }
-}
-
-/* review-form */
-.review-container {
-  text-align: center;
-  margin: auto;
-  padding: 60px 0 200px 0;
-}
-
-@media (max-width:1024px) {
-  .review-container {
-    .form-group {
-      width: 980px;
-    }
+  .review-date {
+    float: right;
   }
 }
 
-@media (min-width:1025px) {
-  .review-container {
-    .form-group {
-      width: 1024px;
-      margin: 10px auto;
+@media (max-width:767px) {
+  .reviews {
+    h3 {
+      font-size: 0.8em;
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.6em;
+      text-align: center;
+    }
+    .review-date {
+      text-align: left;
     }
   }
 }
