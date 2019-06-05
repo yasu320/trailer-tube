@@ -51,9 +51,11 @@
                   <% video.reviews.each do |review| %>
                     <div class="reviews">
                       <div class="row blockquote review-item">
-                        <h3><%= link_to review.title, video_review_path(video, review) %></h3>
-                        <p><%= simple_format(review.content.truncate(100)) %></p>
-                        <small class="review-date"><%= "#{Date.parse(review.created_at.to_s).strftime("%Y年%m月%d日")}投稿" %></small>
+                        <div class="col-md-12">
+                          <h3><%= link_to review.title, video_review_path(video, review) %></h3>
+                          <p><%= simple_format(review.content.truncate(100)) %></p>
+                          <small class="review-date"><%= "#{Date.parse(review.created_at.to_s).strftime("%Y年%m月%d日")}投稿" %></small>
+                        </div>
                       </div>
                     </div>
                   <% end %>

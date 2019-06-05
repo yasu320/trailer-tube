@@ -857,3 +857,9 @@ p {
 .custom-select {
   width: 30%;
 }
+
+@media screen and (max-width: 768px) {
+  .none {
+    display:none!important;
+  }
+}
