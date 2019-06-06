@@ -1,0 +1,30 @@
+<section class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Trailer Tube</h1>
+    <p class="lead text-muted">予告編から映画を探す、レビューをする</p>
+    <% unless user_signed_in? %>
+      <p>
+        <%= link_to "登録して使う", new_user_registration_path, class:"btn btn-primary my-2" %>
+      </p>
+    <% end %>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <%= link_to image_tag(video.thumbnail, class: "card-img-top"), video_path(video) %>
+          <div class="card-body">
+            <p class="card-text"><%= video.title %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class="text-muted"><%= Date.parse(video.date.to_s).strftime("%Y年%m月%d日") %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div><%= paginate @videos, window: 2 %></div>
+</div>

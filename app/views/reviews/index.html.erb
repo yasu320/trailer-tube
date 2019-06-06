@@ -1,0 +1,34 @@
+<% provide(:title, "#{@video.title}のレビュー") %>
+<div class="container" %>
+  <div class="video-info justify-content-center d-flex">
+    <%= link_to image_tag(@video.thumbnail,:width => "100"), video_path(@video) %>
+    <%= link_to @video.title, video_path(@video) %>
+  </div>
+  <div class="review-button"><%= link_to 'レビューを書く', new_video_review_path(@video), class:"btn btn-warning" %></div>
+  <h2>評価・レビュー</h2>
+  <% if @reviews.exists? %>
+    <% @reviews.each do |review| %>
+      <div class="reviews">
+        <div class="row blockquote review-item">
+          <div class="col-md-3 text-center">
+            <%= link_to review.user do %>
+              <%= image_tag review.user.image.variant(resize: "80x80") if review.user.image.attached? %>
+              <%= holder_tag '80x80', 'アイコン' unless review.user.image.attached? %>
+            <% end %>
+            <div class="caption">
+              <small><%= link_to review.user.username, review.user %></small>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <h3><%= link_to review.title, video_review_path(@video, review) %></h3>
+            <%= simple_format(review.content.truncate(100)) %>
+            <small class="review-date"><%= Date.parse(review.created_at.to_s).strftime("%Y年%m月%d日") %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>まだレビューはありません</h2>
+<% end %>
+  <%= paginate @reviews %>
+</div>

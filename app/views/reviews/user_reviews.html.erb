@@ -1,0 +1,70 @@
+<% provide(:title, "#{@user.username}さんのレビュー") %>
+<div class="container">
+  <div class="view-account">
+    <section class="module">
+      <div class="module-inner">
+        <div class="side-bar">
+          <div class="user-info">
+            <%= image_tag @user.image.variant(resize: "150x150") if @user.image.attached? %>
+            <%= holder_tag '150x150', 'アイコン' unless @user.image.attached? %>
+            <ul class="meta list list-unstyled">
+              <li class="name">
+                <%= @user.username %>
+              </li>
+            </ul>
+          </div>
+          <nav class="side-menu">
+            <ul class="nav">
+              <li><%= link_to user_path(@user) do %>
+                  <%= fa_icon("user lg")%> プロフィール
+                <% end %>
+              </li>
+              <li class="active"><%= link_to user_reviews_path(@user) do %>
+                  <%= fa_icon("pencil lg")%> レビュー
+                <% end %>
+              </li>
+              <% if @user == current_user %>
+                <li><%= link_to edit_user_registration_path do %>
+                    <%= fa_icon("cog lg")%> 設定
+                  <% end %>
+                </li>
+                <% if @user.provider == nil %>
+                  <li><%= link_to password_change_users_path do %>
+                      <%= fa_icon("lock lg")%> パスワードを変更
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="content-panel">
+          <div class="content-header-wrapper">
+            <h2 class="title">レビュー</h2>
+          </div>
+            <ul class="list-group list-group-flush">
+              <% @videos.each do |video| %>
+                <li class="list-group-item">
+                  <%= link_to image_tag(video.thumbnail,:width => "100"), video_path(video) %>
+                  <%= link_to video.title, video_path(video) %>
+                  <% video.reviews.each do |review| %>
+                    <div class="reviews">
+                      <div class="row blockquote review-item">
+                        <div class="col-md-12">
+                          <h3><%= link_to review.title, video_review_path(video, review) %></h3>
+                          <p><%= simple_format(review.content.truncate(100)) %></p>
+                          <small class="review-date"><%= "#{Date.parse(review.created_at.to_s).strftime("%Y年%m月%d日")}投稿" %></small>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+        </div>
+        <%= paginate @videos %>
+      </div>
+    </section>
+  </div>
+</div>

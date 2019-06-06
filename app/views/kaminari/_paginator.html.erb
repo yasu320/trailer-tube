@@ -1,0 +1,17 @@
+<%= paginator.render do %>
+  <nav>
+    <ul class="pagination justify-content-center">
+      <div class="none"><%= first_page_tag unless current_page.first? %></div>
+      <%= prev_page_tag unless current_page.first? %>
+      <% each_page do |page| %>
+        <% if page.left_outer? || page.right_outer? || page.inside_window? %>
+          <%= page_tag page %>
+        <% elsif !page.was_truncated? -%>
+          <div class="none"><%= gap_tag %></div>
+        <% end %>
+      <% end %>
+      <%= next_page_tag unless current_page.last? %>
+      <div class="none"><%= last_page_tag unless current_page.last? %></div>
+    </ul>
+  </nav>
+<% end %>

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
   <head>
-    <title>TrailerTube</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Oswald" rel="stylesheet">
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column h-100">
+      <%= render 'layouts/header' %>
+    <main role="main" class="flex-shrink-0">
+      <%= yield %>
+    </main>
+      <%= render 'layouts/footer' %>
   </body>
 </html>

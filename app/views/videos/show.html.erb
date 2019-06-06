@@ -1,0 +1,37 @@
+<% provide(:title, @video.title) %>
+<div class="container col-lg-6"%>
+  <div class="iframe-wrap">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/<%= @video.url %>" allowfullscreen></iframe>
+    </div>
+    <%= rating_for @video, '評価', disable_after_rate: true, imdb_avg: true %>
+    <div class="review-button"><%= link_to 'レビューを書く', new_video_review_path(@video), class:"btn btn-warning" %></div>
+    <p>動画公開日：<%= Date.parse(@video.date.to_s).strftime("%Y年%m月%d日") %></p>
+    <p><%= @video.title %></p>
+    <p><%= @video.description %></p>
+  </div>
+  <h2>評価・レビュー</h2>
+  <% if @reviews.exists? %>
+    <% @reviews.each do |review| %>
+      <div class="reviews">
+        <div class="row blockquote review-item">
+          <div class="col-md-3 text-center">
+            <%= link_to review.user do %>
+              <%= image_tag review.user.image.variant(resize: "80x80") if review.user.image.attached? %>
+              <%= holder_tag '80x80', 'アイコン' unless review.user.image.attached? %>
+            <% end %>
+            <div class="caption">
+              <small><%= link_to review.user.username, review.user %></small>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <h3><%= link_to review.title, video_review_path(@video, review) %></h3>
+            <%= simple_format(review.content.truncate(100)) %>
+            <small class="review-date"><%= Date.parse(review.created_at.to_s).strftime("%Y年%m月%d日") %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="review-button"><%= link_to 'すべてのレビューを見る', video_reviews_path(@video), class:"btn btn-info" %></div>
+  <% end %>
+</div>

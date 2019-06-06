@@ -1,0 +1,108 @@
+<% provide(:title, "設定") %>
+<div class="container">
+  <div class="view-account">
+    <div class="module">
+      <div class="module-inner">
+        <div class="side-bar">
+          <div class="user-info">
+            <%= image_tag @user.image.variant(resize: "150x150") if @user.image.attached? %>
+            <%= holder_tag '150x150', 'アイコン' unless @user.image.attached? %>
+            <ul class="meta list list-unstyled">
+              <li class="name">
+                <%= current_user.username %>
+              </li>
+            </ul>
+          </div>
+          <nav class="side-menu">
+            <ul class="nav">
+              <li><%= link_to user_path(@user) do %>
+                  <%= fa_icon("user lg")%> プロフィール
+                <% end %>
+              </li>
+              <li><%= link_to user_reviews_path(@user) do %>
+                  <%= fa_icon("pencil lg")%> レビュー
+                <% end %>
+              </li>
+              <li class="active"><%= link_to edit_user_registration_path do %>
+                  <%= fa_icon("cog lg")%> 設定
+                <% end %>
+              </li>
+              <% if @user.provider == nil %>
+                <li><%= link_to password_change_users_path do %>
+                    <%= fa_icon("lock lg")%> パスワードを変更
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="content-panel">
+          <div class="content-header-wrapper">
+            <h2 class="title">プロフィールを編集</h2>
+          </div>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+            <form>
+              <div class="col-sm-6 offset-sm-3">
+                <%= devise_error_messages! %>
+              </div>
+              <div class="form-group row">
+                <%=f.label :image, class: "col-sm-3 col-form-label" %>
+                <div class="col-sm-6">
+                  <%= f.file_field :image %>
+                </div>
+              </div>
+              <div class="form-group row">
+                  <%= f.label :username, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :description, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", size: "60x10" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :birth_date, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.date_select :birth_date, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 16), default: Date.new(1989, 1, 1) %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :sex, class: "col-sm-3 col-form-label", for: "inlineFormCustomSelect"%>
+                <div class="col-sm-6">
+                  <%= f.select :sex, User.sexes.keys.to_a, {}, class: "custom-select", id: "inlineFormCustomSelect" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :website, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.url_field :website, autofocus: true, autocomplete: "website", class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                  <%= f.label :email, class: "col-sm-3 col-form-label"%>
+                <div class="col-sm-6">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="offset-sm-3 col-sm-10">
+                  <%= f.submit "送信する", class: "btn btn-primary" %>
+                </div>
+              </div>
+            </form>
+          <% end %>
+          <div class="row">
+            <div class="offset-sm-3 col-sm-10">
+              <p><%= link_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
