@@ -45,6 +45,21 @@ p {
   line-height: 1.7em;
 }
 
+/* navbar */
+
+.navbar {
+  z-index: 2;
+  margin-bottom: -60px;
+  background-color: transparent;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .dropdown-menu a {
+    color: black;
+  }
+}
+
 /* footer */
 
 .footer {
@@ -60,23 +75,44 @@ p {
 /* home */
 
 .jumbotron {
-  background-image: url("felix-mooneeram-222805-unsplash.jpg");
+  background-image: url("krists-luhaers-543526-unsplash.jpg");
   background-size: cover;
   background-position: center 60%;
   overflow: hidden;
   position: relative;
-  z-index: 0;
+  z-index: 1;
+  height: 75vh;
   background-color: rgba(0,0,0,0.6);
-  .container p {
-    color: white;
+  .container {
+    position: relative;
+    top: 10%;
+    p {
+      color: white;
+    }
   }
+}
+
+.jumbotron:before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
 }
 
 .jumbotron-heading {
   font-family: 'Oswald', sans-serif;
   font-family: 'Lobster', cursive;
   color: white;
-  font-size: 4em;
+  font-size: 5em;
 }
 
 /* error-message */
