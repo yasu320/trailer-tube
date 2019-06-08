@@ -863,3 +863,24 @@ p {
     display:none!important;
   }
 }
+
+.modal-body {
+  span {
+    padding: 10px;
+  }
+  padding: 0;
+  p {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.about_find {
+  padding: 20px;
+  background-color: orange;
+}
+
+.about_review {
+  padding: 20px;
+  background-color: lightskyblue;
+}
