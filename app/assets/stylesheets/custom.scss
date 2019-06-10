@@ -60,6 +60,16 @@ p {
   }
 }
 
+.custom-header {
+  margin-bottom: 0px;
+  background-color: indianred;
+  border-bottom: thin solid #eaeaea;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 /* footer */
 
 .footer {
