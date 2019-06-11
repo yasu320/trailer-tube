@@ -23,6 +23,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: sans-serif;
 }
 
 h1 {
@@ -45,9 +46,21 @@ p {
   line-height: 1.7em;
 }
 
+a {
+  font-family: sans-serif;
+}
+
 /* navbar */
 
 .navbar {
+  background-color: indianred;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.navbar-custom {
   z-index: 2;
   margin-bottom: -60px;
   background-color: transparent;
@@ -60,13 +73,21 @@ p {
   }
 }
 
-.custom-header {
-  margin-bottom: 0px;
-  background-color: indianred;
-  border-bottom: thin solid #eaeaea;
-  a {
-    color: white;
-    text-decoration: none;
+@media screen and (max-width: 991px) {
+  .navbar-custom {
+    margin-bottom: 0px;
+    background-color: indianred;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+  .navbar-nav {
+    padding-top: -15px;
+  }
+  .border-line {
+    border-bottom: 1.2px solid white;
+    margin: 0;
   }
 }
 
@@ -93,6 +114,7 @@ p {
   z-index: 1;
   height: 75vh;
   background-color: rgba(0,0,0,0.6);
+  margin: 0px;
   .container {
     position: relative;
     top: 10%;
@@ -123,6 +145,13 @@ p {
   font-family: 'Lobster', cursive;
   color: white;
   font-size: 5em;
+}
+
+.movie-top p {
+  margin: 0;
+  text-align: center;
+  font-size: 2.5em;
+  padding-bottom: 15px;
 }
 
 /* error-message */

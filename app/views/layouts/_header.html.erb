@@ -1,25 +1,27 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark <%= 'custom-header' unless current_page?(root_path) %>">
+  <nav class="navbar navbar-expand-lg navbar-dark <%= 'navbar-custom' if current_page?(root_path) %>">
     <%= link_to "Trailer Tube", root_path, class:"navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav mr-auto">　
-        <lis>
-          <!-- Button trigger modal -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
           <a class="nav-link" href="" data-toggle="modal" data-target="#exampleModalLong">
             About
           </a>
-        </lis>
+        </li>
       </ul>
+      <p class="border-line"></p>
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <%= link_to 'プロフィール', user_path(current_user), class: "nav-link" %>
-          <%= link_to '設定', edit_user_registration_path, class:"nav-link" %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <li class="nav-item active"><%= link_to 'プロフィール', user_path(current_user), class: "nav-link" %></li>
+          <li class="nav-item active"><%= link_to '設定', edit_user_registration_path, class:"nav-link" %></li>
+          <li class="nav-item active"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
         <% else %>
-          <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+          <li class="nav-item active"><%= link_to 'ログイン', new_user_session_path, class: "nav-link" %></li>
         <% end %>
+      </ul>
     </div>
   </nav>
 </header>
