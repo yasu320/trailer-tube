@@ -2,11 +2,6 @@
   <div class="container">
     <h1 class="jumbotron-heading">Trailer Tube</h1>
     <p class="lead">予告編から映画を探す、レビューをする</p>
-    <% unless user_signed_in? %>
-      <p>
-        <%= link_to "登録して使う", new_user_registration_path, class:"btn btn-primary my-2" %>
-      </p>
-    <% end %>
     <div class="d-flex justify-content-center h-100">
       <%= search_form_for @q, url: search_videos_path do |f| %>
       <div class="searchbar">
@@ -15,6 +10,11 @@
       </div>
       <% end %>
     </div>
+    <% unless user_signed_in? %>
+      <p class="signup-btn">
+        <%= link_to "登録して使う", new_user_registration_path, class:"btn btn-primary my-2" %>
+      </p>
+    <% end %>
   </div>
 </section>
 
