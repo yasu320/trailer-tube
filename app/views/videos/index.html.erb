@@ -7,6 +7,14 @@
         <%= link_to "登録して使う", new_user_registration_path, class:"btn btn-primary my-2" %>
       </p>
     <% end %>
+    <div class="d-flex justify-content-center h-100">
+      <%= search_form_for @q, url: search_videos_path do |f| %>
+      <div class="searchbar">
+        <%= f.search_field :title_cont, class: "search_input", placeholder: "検索..." %>
+        <%= button_tag sanitize('<i class="fa fa-search"></i>'), type: "submit", class: "btn search_icon " %>
+      </div>
+      <% end %>
+    </div>
   </div>
 </section>
 
