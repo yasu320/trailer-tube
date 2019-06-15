@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-center h-100">
       <%= search_form_for @q, url: search_videos_path do |f| %>
       <div class="form-inline search_bar">
-        <%= f.search_field :title_cont, class: "form-control mr-sm-2", placeholder: "検索...", ontouchstart: ""  %>
+        <%= f.search_field :title_or_description_cont, class: "form-control mr-sm-2", placeholder: "検索...", ontouchstart: ""  %>
         <%= f.submit class: "btn btn-danger my-2 my-sm-0 search-btn" %>
       </div>
       <% end %>
