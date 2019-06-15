@@ -1,14 +1,18 @@
 <% provide(:title, "新規登録") %>
 <article class="card-body mx-auto">
   <h4 class="card-title mt-3 text-center">新規登録</h4>
-  <p>
     <%= link_to user_twitter_omniauth_authorize_path, class: "btn btn-block btn-twitter" do %>
       <%= fa_icon("twitter lg") %> Twitterでログイン
     <% end %>
     <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-facebook" do %>
       <%= fa_icon("facebook lg") %> Facebookでログイン
     <% end %>
-  </p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.hidden_field :username, value: "guest" %>
+      <%= f.hidden_field :email, value: "guest@guest.com" %>
+      <%= f.hidden_field :password, value: "guest123" %>
+      <%= button_tag sanitize('<i class="fa fa-sign-in fa-lg"></i> 簡単ログイン'), class: "btn btn-block btn-success guest-btn" %>
+    <% end %>
   <p class="divider-text">
     <span class="bg-white">または</span>
   </p>
