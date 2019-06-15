@@ -35,14 +35,8 @@
   <p class="divider-text">
     <span class="bg-white">または</span>
   </p>
-  <p>
-    <%= link_to user_twitter_omniauth_authorize_path, class: "btn btn-block btn-twitter" do %>
-      <%= fa_icon("twitter lg") %> Twitterでログイン
-    <% end %>
-    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-facebook" do %>
-      <%= fa_icon("facebook lg") %> Facebookでログイン
-    <% end %>
-  </p>
+
+  <div class="devise-links"><%= render "devise/shared/links" %></div>
 
   <p class="text-center">アカウントをお持ちでないですか？<%= link_to "登録する", new_user_registration_path %></p>
 </article>
