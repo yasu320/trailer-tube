@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark <%= 'navbar-custom' if current_page?(root_path) %>">
+  <nav class="navbar navbar-expand-lg navbar-dark <%= 'navbar-custom' if %w[root search_videos].any? { |name| current_page?(send("#{name}_path")) } %>">
     <%= link_to "Trailer Tube", root_path, class:"navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

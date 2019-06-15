@@ -12,5 +12,8 @@ Rails.application.routes.draw do
 
   resources :videos, only: [:index, :show] do
     resources :reviews, only: [:index, :show, :new, :create]
+    collection do
+      match 'search' => 'videos#search', via: [:get, :post], as: :search
+    end
   end
 end
