@@ -2,8 +2,16 @@
   <div class="container">
     <h1 class="jumbotron-heading">Trailer Tube</h1>
     <p class="lead">予告編から映画を探す、レビューをする</p>
+    <div class="d-flex justify-content-center h-100">
+      <%= search_form_for @q, url: search_videos_path do |f| %>
+      <div class="form-inline search_bar">
+        <%= f.search_field :title_or_description_cont, class: "form-control mr-sm-2", placeholder: "検索...", ontouchstart: ""  %>
+        <%= f.submit class: "btn btn-danger my-2 my-sm-0 search-btn" %>
+      </div>
+      <% end %>
+    </div>
     <% unless user_signed_in? %>
-      <p>
+      <p class="signup-btn">
         <%= link_to "登録して使う", new_user_registration_path, class:"btn btn-primary my-2" %>
       </p>
     <% end %>

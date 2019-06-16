@@ -98,7 +98,9 @@
           <% end %>
           <div class="row">
             <div class="offset-sm-3 col-sm-10">
-              <p><%= link_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>
+              <% unless current_user.email == "guest@guest.com" %>
+                <p><%= link_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>
+              <% end %>
             </div>
           </div>
         </div>

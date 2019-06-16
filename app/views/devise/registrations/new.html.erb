@@ -1,14 +1,7 @@
 <% provide(:title, "新規登録") %>
 <article class="card-body mx-auto">
   <h4 class="card-title mt-3 text-center">新規登録</h4>
-  <p>
-    <%= link_to user_twitter_omniauth_authorize_path, class: "btn btn-block btn-twitter" do %>
-      <%= fa_icon("twitter lg") %> Twitterでログイン
-    <% end %>
-    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-block btn-facebook" do %>
-      <%= fa_icon("facebook lg") %> Facebookでログイン
-    <% end %>
-  </p>
+  <%= render "devise/shared/links" %>
   <p class="divider-text">
     <span class="bg-white">または</span>
   </p>

@@ -145,6 +145,18 @@ a {
   font-family: 'Lobster', cursive;
   color: white;
   font-size: 5em;
+  margin: 0px;
+}
+
+@media screen and (max-width: 425px) {
+  .jumbotron-heading {
+    color: white;
+    font-size: 4em;
+  }
+  .lead {
+    font-size: 1em;
+    margin: 0px;
+  }
 }
 
 .movie-top p {
@@ -169,6 +181,10 @@ a {
 }
 
 /* sign in form */
+
+.devise-links {
+  padding-bottom: 20px;
+}
 
 .card-body {
   max-width: 400px;
@@ -958,4 +974,16 @@ a {
 .about_review {
   padding: 20px;
   background-color: lightskyblue;
+}
+
+/* search-bar */
+.search_bar {
+  margin: 20px;
+  .search-btn {
+    text-align: right;
+  }
+}
+
+.guest-btn {
+  margin-top: 8px;
 }
