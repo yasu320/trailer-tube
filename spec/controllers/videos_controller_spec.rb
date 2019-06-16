@@ -7,7 +7,7 @@ RSpec.describe VideosController, type: :controller do
     end
 
     it "responds successfully" do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it "returns a 200 response" do
@@ -40,6 +40,16 @@ RSpec.describe VideosController, type: :controller do
 
     it "assigns @reviews" do
       expect(assigns(:reviews)).to match_array(video.reviews)
+    end
+  end
+
+  describe "#search" do
+    before do
+      get :search
+    end
+
+    it "renders th show template" do
+      expect(response).to render_template("index")
     end
   end
 end
