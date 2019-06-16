@@ -24,7 +24,7 @@ RSpec.describe VideosController, type: :controller do
   end
 
   describe "#show" do
-    let(:video) { create(:video) }
+    let(:video) { create(:video, :with_reviews) }
 
     before do
       get :show, params: { id: video.id }
@@ -36,6 +36,10 @@ RSpec.describe VideosController, type: :controller do
 
     it "assigns @video" do
       expect(assigns(:video)).to eq video
+    end
+
+    it "assigns @reviews" do
+      expect(assigns(:reviews)).to match_array(video.reviews)
     end
   end
 end
