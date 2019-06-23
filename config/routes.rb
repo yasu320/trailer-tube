@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'videos#index'
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
-  resources :users, only: [:show] do
+  resources :users, only: [:index, :show] do
     collection do
       get '/password/change', to: 'users#password'
       patch 'update_password'

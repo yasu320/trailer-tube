@@ -987,3 +987,61 @@ a {
 .guest-btn {
   margin-top: 8px;
 }
+
+/* user-index */
+.userMain .userBlock{
+  float: left;
+  width: 100%;
+  box-shadow: 0px 0px 23px -3px #ccc;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  background:#fff;
+
+
+}
+.userMain .userBlock .backgrounImg{
+  float: left;
+  overflow: hidden;
+  height: 77px;
+}
+.userMain .userBlock .backgrounImg img{
+  width: auto;
+}
+.userMain .userBlock .userImg{
+  text-align: center;
+}
+.userMain .userBlock .userImg img{
+  width: 100px;
+  height: 100px;
+  margin-top: -39px;
+  border-radius: 100%;
+  border: 5px solid #fff;
+
+}
+.userMain .userBlock .userDescription{
+  a {
+    color: #07C;
+    text-decoration: none;
+  }
+  text-align: center;
+}
+.userMain .userBlock .userDescription h5{
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+.userMain .userBlock .userDescription p{
+  margin-bottom: 5px;
+}
+.userMain .userBlock .userDescription .btn{
+  padding: 0px 23px 0px 23px;
+  height: 22px;
+  border-radius: 0;
+  font-size: 12px;
+  background: #0198dd;
+  color: #fff;
+}
+.userMain .userBlock .userDescription .btn:hover{
+
+  opacity:0.7;
+}
