@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :auth_user, only: [:password, :update_password]
+
+  def index
+    @users = User.includes(image_attachment: :blob).page(params[:page]).per(18)
+  end
 
   def show
     @user = User.find(params[:id])
