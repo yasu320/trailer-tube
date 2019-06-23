@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>ユーザー</h1>
+  <div class="row userMain">
+    <% @users.each do |user| %>
+      <div class="col-md-3 col-sm-4">
+        <div class="userBlock">
+          <div class="backgrounImg">
+            <img src="https://preview.ibb.co/miQjb7/photography.jpg">
+          </div>
+          <div class="userImg">
+            <%= link_to user do %>
+              <%= image_tag user.image.variant(resize: "100x100") if user.image.attached? %>
+              <%= holder_tag '100x100', 'アイコン' unless user.image.attached? %>
+            <% end %>
+          </div>
+          <div class="userDescription">
+            <h5><%= link_to user.username, user %></h5>
+            <div class="reviews-count">
+              <%= link_to user_reviews_path(user) do %>
+                <span class="number"><%= user.reviews.count %></span>
+                <span>レビュー</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div><%= paginate @users, window: 2 %></div>
+</div>
+

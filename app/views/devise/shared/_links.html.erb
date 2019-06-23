@@ -5,7 +5,7 @@
   <%= fa_icon("facebook lg") %> Facebookでログイン
 <% end %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= f.hidden_field :username, value: "guest" %>
+  <%= f.hidden_field :username, value: "ゲスト" %>
   <%= f.hidden_field :email, value: "guest@guest.com" %>
   <%= f.hidden_field :password, value: "guest123" %>
   <%= button_tag sanitize('<i class="fa fa-sign-in fa-lg"></i> 簡単ログイン'), class: "btn btn-block btn-success guest-btn" %>
