@@ -85,7 +85,9 @@ RSpec.describe ReviewsController, type: :controller do
       it "adds a review" do
         review_params = attributes_for(:review)
         sign_in @user
-        expect { post :create, params: { video_id: video.id, review: review_params } }.to change(@user.reviews, :count).by(1)
+        expect do
+          post :create, params: { video_id: video.id, review: review_params }
+        end.to change(@user.reviews, :count).by(1)
       end
     end
 

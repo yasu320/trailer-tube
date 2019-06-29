@@ -46,7 +46,6 @@ class User < ApplicationRecord
   def image_url
     if provider == 'twitter'
       profile_image_url&.gsub!("_normal", "")
-
     elsif provider == 'facebook'
       profile_image_url + "?type=large"
     end
