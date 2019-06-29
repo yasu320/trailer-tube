@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
 
   def user_reviews
     @user = User.find(params[:user_id])
-    @videos = Video.includes(:reviews).where(reviews: { user_id: @user }).page(params[:page]).per(10).recent
+    @videos = Video.includes(:reviews).where(reviews: { user_id: @user }).page(params[:page]).per(10)
   end
 
   private

@@ -12,6 +12,7 @@ class User < ApplicationRecord
   ratyrate_rater
   enum sex: { 男性: 1, 女性: 2, 指定なし: 3 }
   validates :description, length: { maximum: 5000 }, on: :update
+  scope :recent, -> { order(created_at: :desc) }
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first

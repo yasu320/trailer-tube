@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :auth_user, only: [:password, :update_password]
 
   def index
-    @users = User.includes(image_attachment: :blob).page(params[:page]).per(12)
+    @users = User.includes(image_attachment: :blob).page(params[:page]).per(12).recent
   end
 
   def show
