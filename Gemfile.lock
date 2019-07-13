@@ -179,6 +179,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    mysql2 (0.5.2)
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
@@ -207,7 +208,6 @@ GEM
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
-    pg (0.20.0)
     popper_js (1.14.5)
     powerpack (0.1.2)
     pry (0.12.2)
@@ -379,10 +379,10 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mini_magick (~> 4.8)
   mini_racer
+  mysql2
   omniauth
   omniauth-facebook
   omniauth-twitter
-  pg (~> 0.20.0)
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.1)
