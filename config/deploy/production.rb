@@ -1,5 +1,3 @@
-set :app_eip, "3.113.97.130"
+server '3.113.97.130', user: 'admin', roles: %w{app db web}
 
-role :app, "admin@#{fetch(:app_eip)}"
-role :web, "admin@#{fetch(:app_eip)}"
-role :db, "admin@#{fetch(:app_eip)}"
+set :ssh_options, keys: '~/.ssh/sTrailerTube_key_rsa'
