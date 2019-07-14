@@ -1,4 +1,4 @@
-lock '3.9'
+lock '3.11.0 '
 
 set :repo_url, 'git@github.com:yasu320/trailer-tube.git'
 
